@@ -1,18 +1,15 @@
 package com.rollerspeed.rollerspeed.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-
 public class valorescontroller {
-
-        @GetMapping("valores")
-    public String valores() {
-        return "valores";
-
+@GetMapping("/valores")
+    public String valores(Model model) {
+        model.addAttribute("contenido", "valores");
+        return "layout";
     }
     
 }
