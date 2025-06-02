@@ -19,5 +19,15 @@ public class user {
 
     @Column(nullable = false, length =50)
     private String nombre;
+
+    @Column(nullable = false, length = 50)
+    private String genero;
+
+    @Column(name = "email" , nullable = false, length = 50, unique=true)
+    private String correo;
+
+    @Column(length = 50)
+    private String password;
+
     
 }
