@@ -2,13 +2,16 @@ package com.rollerspeed.rollerspeed.Services;
 
 import com.rollerspeed.rollerspeed.Models.user;
 import com.rollerspeed.rollerspeed.Repository.userRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class userService {
-    
+
+    @Autowired
     private final userRepository userRepository;
 
     public userService (userRepository userRepository) {
