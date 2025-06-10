@@ -25,16 +25,16 @@ public class userController {
     }
 
 
-    @GetMapping("/registro")
+    @GetMapping("/usersForm")
     public String mostrarFormularioRegistro(Model model) {
         model.addAttribute("user", new user());
-        return "users"; 
+        return "usersForm"; 
     }
 
     @PostMapping
     public String registrarUsuario(@ModelAttribute("user") user user) {
         userService.save(user);
-        return "redirect:/users/registro?success"; 
+        return "redirect:/users/usersForm?success"; 
     }
 
     
@@ -47,6 +47,6 @@ public class userController {
 
     @GetMapping
 public String redirigirARegistro() {
-    return "redirect:/users/registro";
+    return "redirect:/users/listar";
 }
 }
