@@ -1,26 +1,30 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Registro de Usuario</title>
-</head>
-<body>
-    <h1>Registrar Usuario</h1>
-    <form th:action="@{/users}" th:object="${user}" method="post">
-        <label>Nombre:</label>
-        <input type="text" th:field="*{nombre}" required /><br>
+<!-- src/main/resources/templates/usersForm.html -->
+<div th:fragment="main-content">
+    <h2 th:text="${user.id != null} ? 'Editar Usuario' : 'Nuevo Usuario'"></h2>
+    <form th:action="@{/users/guardarusuario}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div class="mb-3">
+            <label>Nombre:</label>
+            <input type="text" th:field="*{nombre}" class="form-control" required />
+        </div>
 
-        <label>Género:</label>
-        <select th:field="*{genero}" required>
-            <option value="">Seleccione</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-            <option value="Otro">Otro</option>
-        </select><br>
+        <div class="mb-3">
+            <label>Género:</label>
+            <select th:field="*{genero}" class="form-select" required>
+                <option value="">Seleccione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </div>
 
-        <label>Correo:</label>
-        <input type="email" th:field="*{correo}" required /><br>
+        <div class="mb-3">
+            <label>Correo:</label>
+            <input type="email" th:field="*{correo}" class="form-control" required />
+        </div>
 
-        <button type="submit">Guardar</button>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a th:href="@{/users}" class="btn btn-secondary">Cancelar</a>
     </form>
-</body>
-</html>
+</div>
+

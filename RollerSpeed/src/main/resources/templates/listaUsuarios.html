@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Usuarios Registrados</title>
-    <style>
-
-
-    </style>
-</head>
-<body>
+<!-- src/main/resources/templates/users.html -->
+<div th:fragment="main-content">
     <h2>Usuarios Registrados</h2>
-
-    <table>
+    <a class="btn btn-primary mb-3" th:href="@{/users/nuevo}">Nuevo Usuario</a>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Género</th>
                 <th>Correo</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +16,12 @@
                 <td th:text="${user.nombre}">Nombre</td>
                 <td th:text="${user.genero}">Género</td>
                 <td th:text="${user.correo}">Correo</td>
-
+                <td>
+                    <a class="btn btn-sm btn-warning" th:href="@{'/users/editar/' + ${user.id}}">Editar</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{'/users/eliminar/' + ${user.id}}">Eliminar</a>
+                </td>
             </tr>
         </tbody>
     </table>
-</body>
-</html>
+</div>
+

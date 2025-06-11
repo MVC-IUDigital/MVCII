@@ -1,33 +1,41 @@
 package com.rollerspeed.rollerspeed.Services;
 
-import com.rollerspeed.rollerspeed.Models.user;
-import com.rollerspeed.rollerspeed.Repository.userRepository;
+import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.rollerspeed.rollerspeed.Models.user;
+import com.rollerspeed.rollerspeed.Repository.userRepository;
 
 @Service
 public class userService {
 
-    @Autowired
     private final userRepository userRepository;
 
-    public userService (userRepository userRepository) {
+    public userService(userRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public List<user> listUsers () {
+    public List<user> listUsers() {
         return userRepository.findAll();
     }
 
-    public user save (user user) {
+    public user save(user user) {
         return userRepository.save(user);
     }
 
-    public void deleteById (Long id) {
+    public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
-    
+
+    public user getById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    public boolean emailYaExiste(String correo) {
+        Optional<user> usuario = userRepository.findByCorreo(correo);
+        return usuario.isPresent();
+    }
 }
+
